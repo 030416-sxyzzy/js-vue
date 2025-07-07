@@ -1,0 +1,103 @@
+1.js
+1.1.基础语法
+let a = 10;
+const b = "hello";
+//输出
+alert(a + b);
+console.log(a);
+
+1.2.数据类型
+字符串：string
+数字：number
+布尔值：boolean
+null：object
+undefined//为初始化的变量
+//模版字符串拼接：`${变量}`
+
+1.3函数
+function add(a, b) {
+    return a + b;
+}
+
+1.4自定义对象
+let person = {
+    name: "Tom",  
+    Sayhello: function() {
+        console.log("hello");
+};
+console.log(person.name);
+person.Sayhello();
+
+1.4.1JSON-JS标记法
+let json = '{"name": "Tom", "age": 20}';
+let obj = JSON.parse(json);
+//服务器以JSON格式返回数据，用JSON.parse()方法解析为对象
+
+1.5JS-DOM
+    获取DOM对象
+    let h1=document.querySelector('#title1');
+    调用dom对象的方法
+    h1.innerHTML="Hello Vue";
+
+1.6JS-事件监听
+    事件监听：addEventListener()
+    可以多次绑定同一个事件
+    eg.document.querySelector('#b2').addEventListener('click', () => {
+            console.log("我被点击了...");
+        })
+    优化：提高代码复用性
+    引入模块化js文件，使用export导出函数，在其他文件中import导入。
+
+
+2.vue
+数据驱动视图
+v-for：循环渲染列表数据，将数据集合映射为一组 DOM 节点。
+v-if：控制元素的显示与隐藏，适用于需要根据条件展示/隐藏频繁切换的场景。
+v-show：通过css样式控制元素的显示与隐藏 
+v-bind: 绑定数据到元素的属性上，在img标签上绑定src属性以简写为 :。
+v-model：实现表单输入和应用状态的双向绑定。（查询数据显示在控制台）
+v-on：绑定事件监听器，可以简写为 @。
+
+3.axios
+异步请求库，可以发送各种请求，如get、post等。
+异步获取/提交数据： 比如从服务器获取用户列表或向服务器提交表单数据。
+1.根据查询条件动态的查询符合条件的员工信息
+发送axios请求，获取员工列表数据。
+async search() {//使异步函数同步化，用await关键字等待异步操作完成。
+    let result = await axios.get(`https://web-server.itheima.net/emps/list?name=${this.searchForm.name}&gender=${this.searchForm.gender}&job=${this.searchForm.job}`);
+    }
+2.将查询结果渲染到页面上。
+this.empList = result.data.data;
+3.在清空搜索条件后，重新展示员工列表。
+clear() {//清空搜索条件
+    this.search();
+    }
+4.页面加载完成之后，发送axios请求，获取员工列表数据
+vue生命周期-钩子函数
+mounted() {
+    this.search();
+}
+
+框架：
+<script type="module">
+      import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+      createApp({
+        data() {
+          return {
+            empList: [],
+            searchForm: {
+            }
+          }
+        },
+        //方法
+        methods: {
+          search() {
+            },
+          clear() {
+            },
+        }
+        mounted() {
+            this.search();
+        }
+        }).mount('#app')//获取DOM对象
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS-函数</title>
+</head>
+<body>
+  
+
+  <script>
+   //1.自定义对象
+    let person={
+      name:"John",
+      age:30,
+      gender:'男',
+      sayHello:function() {
+        alert(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+      }
+    }
+   //2.调用对象属性/方法
+    alert(person.name);
+    person.sayHello();
+
+    //3.JSON-JS对象标记法
+    let user={
+      name:"John",
+      age:30,
+      gender:"男",
+      }
+   //将对象转换为JSON字符串
+    alert(JSON.stringify(user));
+    //将JSON字符串转换为对象
+    let user2='{"name":"TOM","age":35,"gender":"女"}';
+    alert(JSON.parse(user2).name);
+  </script>
+</body>
+</html>
