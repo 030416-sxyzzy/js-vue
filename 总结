@@ -28,6 +28,7 @@ let person = {
 console.log(person.name);
 person.Sayhello();
 
+
 1.4.1JSON-JS标记法
 let json = '{"name": "Tom", "age": 20}';
 let obj = JSON.parse(json);
